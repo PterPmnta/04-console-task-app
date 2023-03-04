@@ -1,5 +1,5 @@
 import 'colorts/lib/string';
-import { pauseApp, showMenu } from './helpers/mensajes';
+import { inquirerMenu } from './helpers/inquirer';
 
 console.clear();
 const main = async () => {
@@ -8,12 +8,7 @@ const main = async () => {
     let opt: any = '' 
     
     do{
-        opt = await showMenu();
-
-        if(opt !== 0){
-            await pauseApp();
-        }
-        
+        opt = await inquirerMenu();        
     }while (opt !== '0');
 }
 
