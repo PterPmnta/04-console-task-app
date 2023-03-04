@@ -16,6 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/inquirer": "^9.0.3",
+    "@types/uuid": "^9.0.1",
     "nodemon": "^2.0.20",
     "prettier": "^2.8.4",
     "ts-node": "^10.9.1",
@@ -26,6 +27,7 @@
     "@types/color": "^3.0.3",
     "colors": "^1.4.0",
     "colorts": "^0.1.63",
-    "inquirer": "^9.1.4"
+    "inquirer": "^9.1.4",
+    "uuid": "^9.0.0"
   }
 }
