@@ -3,8 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "type": "module",
   "scripts": {
-    "dev": "ts-node ./src/app.ts",
+    "dev": "npx ts-node ./src/app.ts",
     "dev-nodemon": "nodemon --exec npx ts-node ./src/app.ts",
     "start": "node ./dist/app.js",
     "build": "tsc",
@@ -14,6 +15,7 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/inquirer": "^9.0.3",
     "nodemon": "^2.0.20",
     "prettier": "^2.8.4",
     "ts-node": "^10.9.1",
@@ -23,6 +25,7 @@
   "dependencies": {
     "@types/color": "^3.0.3",
     "colors": "^1.4.0",
-    "colorts": "^0.1.63"
+    "colorts": "^0.1.63",
+    "inquirer": "^9.1.4"
   }
 }
