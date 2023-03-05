@@ -1,5 +1,5 @@
 import 'colorts/lib/string';
-import { inquirerMenu, pausarApp } from './helpers/inquirer';
+import { inquirerMenu, leerInput, pausarApp } from './helpers/inquirer';
 import { Tarea } from './models/tarea';
 import { Tareas } from './models/tareas';
 
@@ -7,15 +7,21 @@ console.clear();
 const main = async () => {
     
     let opt: any = '' 
+    const tareas = new Tareas();
     
     do{
-        //opt = await inquirerMenu();  
-        const tareas = new Tareas();
-        const tarea = new Tarea('Comprar comida');
+        opt = await inquirerMenu();  
+        switch (opt) {
+            case '1':
+                const desc = await leerInput('Descripcion :');
+                tareas.crearTarea(desc);
+            break;
 
-        tareas._listado[tarea.id] = tarea;
-
-        console.log(tareas);
+            case '2':
+                console.log(tareas._listado);
+            break;
+        }
+        
         await pausarApp();     
     }while (opt !== '0');
 }
