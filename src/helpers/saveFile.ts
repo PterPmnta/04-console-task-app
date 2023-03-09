@@ -15,8 +15,6 @@ export const loadDB = () => {
     }
 
     const info = fs.readFileSync(pathFile, {encoding: 'utf-8'});
-    console.log(info);
     const dataInfo = JSON.parse(info.toString());
-    console.log('show dataInfo', dataInfo);
-    return null;
+    return dataInfo;
 }
