@@ -2,13 +2,21 @@ import 'colorts/lib/string';
 import { inquirerMenu, leerInput, pausarApp } from './helpers/inquirer';
 import { Tarea } from './models/tarea';
 import { Tareas } from './models/tareas';
-import { saveDB } from './helpers/saveFile';
+import { loadDB, saveDB } from './helpers/saveFile';
 
 console.clear();
 const main = async () => {
     
     let opt: any = '' 
     const tareas = new Tareas();
+
+    const readTasks = loadDB()
+
+    if(readTasks){
+
+    }
+    
+    await pausarApp();    
     
     do{
         opt = await inquirerMenu();  
@@ -23,7 +31,7 @@ const main = async () => {
             break;
         }
 
-        saveDB(tareas.listadoArr);
+        //saveDB(tareas.listadoArr);
         
         await pausarApp();     
     }while (opt !== '0');
