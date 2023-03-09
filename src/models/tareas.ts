@@ -21,4 +21,10 @@ export class Tareas {
         const tarea = new Tarea(desc);
         this._listado[tarea.id] = tarea
     }
+
+    loadTaskFromArray(tareas: any){
+        tareas.forEach((task: any) => {
+            this._listado[task.id] = task;
+        })
+    }
 }

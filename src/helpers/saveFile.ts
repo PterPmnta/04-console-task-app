@@ -1,8 +1,20 @@
 import fs from 'fs';
 
-export const saveDB = (data: any) => {
+const pathFile = './src/database/data.json';
 
-    const pathFile = './src/database/data.json';
+export const saveDB = (data: any) => {    
+    const dataToSave = JSON.stringify(data);
+    fs.writeFileSync(pathFile, dataToSave);
+}
 
-    fs.writeFileSync(pathFile, JSON.stringify(data));
+export const loadDB = () => {
+
+    if(!fs.existsSync(pathFile)){
+        console.log('File does not exist');
+        return null;
+    }
+
+    const info = fs.readFileSync(pathFile, {encoding: 'utf-8'});
+    const dataInfo = JSON.parse(info.toString());
+    return dataInfo;
 }
