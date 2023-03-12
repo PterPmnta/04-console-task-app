@@ -24,7 +24,15 @@ const main = async () => {
             break;
 
             case '2':
-                console.log(tareas.listadoArr);
+                tareas.allTasksList();
+            break;
+
+            case '3':
+                tareas.taskCompletedPending(true);
+            break;
+
+            case '4':
+                tareas.taskCompletedPending(false);
             break;
         }
 
