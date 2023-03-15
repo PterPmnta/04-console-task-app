@@ -84,3 +84,30 @@ export const leerInput = async(message: string) => {
     return desc;
 
 }
+
+export const listTaskToDelete = async (tareas: Array<any>) => {
+
+    const choices = tareas.map((tarea, index: number) => {
+
+        const idx = `${index+1}.`.green
+
+        return{
+            value: tarea.id,
+            name: `${ idx } ${tarea.desc}`
+        }
+    })
+
+    const preguntas = [
+        {
+            type: 'list',
+            name: 'id',
+            message: 'Borrar tarea',
+            choices
+        }
+    ]
+
+    const { id } = await inquirer.prompt(preguntas);
+
+    return id;
+
+}
