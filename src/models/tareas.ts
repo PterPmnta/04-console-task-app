@@ -3,6 +3,7 @@ import { Tarea } from "./tarea";
 
 
 export class Tareas {
+
     _listado: ITareas = {}
 
     get listadoArr(){
@@ -32,8 +33,6 @@ export class Tareas {
 
         const listConverted = Object.values(this._listado);
 
-        console.log();
-
         listConverted.forEach((task: any, index: number) => {
 
             const indice = `${index+1}`.green
@@ -48,7 +47,6 @@ export class Tareas {
             
             console.log(`${indice} ${desc} :: ${taskStatus}`)
         })
-        console.log();
     }
 
     taskCompletedPending(status: boolean){
@@ -74,7 +72,6 @@ export class Tareas {
             });
         }
 
-        console.log();
         listFiltered.forEach((task: any, index: number) => {
 
             const indice = `${index+1}`.green
@@ -87,6 +84,13 @@ export class Tareas {
             }
             
         })
-        console.log();
+    }
+
+    deleteTask(id: string){
+
+        if(this._listado[id]){
+            delete this._listado[id];
+        }
+
     }
 }
