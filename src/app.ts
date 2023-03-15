@@ -1,5 +1,5 @@
 import 'colorts/lib/string';
-import { inquirerMenu, leerInput, pausarApp } from './helpers/inquirer';
+import { inquirerMenu, leerInput, listTaskToDelete, pausarApp } from './helpers/inquirer';
 import { Tarea } from './models/tarea';
 import { Tareas } from './models/tareas';
 import { loadDB, saveDB } from './helpers/saveFile';
@@ -33,6 +33,11 @@ const main = async () => {
 
             case '4':
                 tareas.taskCompletedPending(false);
+            break;
+
+            case '6':
+                const id = await listTaskToDelete(tareas.listadoArr);
+                console.log(id);
             break;
         }
 
