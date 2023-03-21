@@ -37,50 +37,87 @@ const preguntas = [
             }
         ]
     }
-]
+];
 
-export const inquirerMenu = async() => {
-
+export const inquirerMenu = async () => {
     console.clear();
     console.log('================================'.green);
     console.log('      Seleccione una opcion     '.green);
     console.log('================================\n'.green);
 
-    const {opcion} = await inquirer.prompt(preguntas);
+    const { opcion } = await inquirer.prompt(preguntas);
 
     return opcion;
-}
+};
 
 export const pausarApp = async () => {
-
     const preguntas = [
         {
             type: 'input',
             name: 'enter',
             message: `Presione ${'enter'.green} para continuar`
         }
-    ]
+    ];
 
     await inquirer.prompt(preguntas);
-} 
+};
 
-export const leerInput = async(message: string) => {
-
+export const leerInput = async (message: string) => {
     const question = [
         {
             type: 'input',
             name: 'desc',
             message: 'message',
-            validate(value: any){
-                if(value.length === 0){
-                    return 'Por favor ingrese un valor'
+            validate(value: any) {
+                if (value.length === 0) {
+                    return 'Por favor ingrese un valor';
                 }
                 return true;
             }
         }
-    ]
+    ];
 
-    const {desc} = await inquirer.prompt(question);
+    const { desc } = await inquirer.prompt(question);
     return desc;
+};
 
-}
+export const listTaskToDelete = async (tareas: Array<any>) => {
+    const choices = tareas.map((tarea, index: number) => {
+        const idx = `${index + 1}.`.green;
+
+        return {
+            value: tarea.id,
+            name: `${idx} ${tarea.desc}`
+        };
+    });
+
+    choices.unshift({
+        value: 0,
+        name: '0.'.green + 'Cancelar'
+    });
+
+    const preguntas = [
+        {
+            type: 'list',
+            name: 'id',
+            message: 'Borrar tarea',
+            choices
+        }
+    ];
+
+    const { id } = await inquirer.prompt(preguntas);
+    return id;
+};
+
+export const confirmTaskToDelete = async (message: string) => {
+    const question = [
+        {
+            type: 'confirm',
+            name: 'ok',
+            message
+        }
+    ];
+
+    const { ok } = await inquirer.prompt(question);
+    return ok;
+};
