@@ -9,6 +9,7 @@ import {
 import { Tarea } from './models/tarea';
 import { Tareas } from './models/tareas';
 import { loadDB, saveDB } from './helpers/saveFile';
+import { listTaskToComplete } from './helpers/inquirer';
 
 console.clear();
 const main = async () => {
@@ -38,6 +39,11 @@ const main = async () => {
 
             case '4':
                 tareas.taskCompletedPending(false);
+                break;
+
+            case '5':
+                const ids = await listTaskToComplete(tareas.listadoArr);
+                console.log(ids);
                 break;
 
             case '6':
