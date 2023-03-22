@@ -121,3 +121,27 @@ export const confirmTaskToDelete = async (message: string) => {
     const { ok } = await inquirer.prompt(question);
     return ok;
 };
+
+export const listTaskToComplete = async (tareas: Array<any>) => {
+    const choices = tareas.map((tarea, index: number) => {
+        const idx = `${index + 1}.`.green;
+
+        return {
+            value: tarea.id,
+            name: `${idx} ${tarea.desc}`,
+            checked: tarea.completadoEn ? true : false
+        };
+    });
+
+    const pregunta = [
+        {
+            type: 'checkbox',
+            name: 'ids',
+            message: 'Seleccione la tarea',
+            choices
+        }
+    ];
+
+    const { ids } = await inquirer.prompt(pregunta);
+    return ids;
+};
