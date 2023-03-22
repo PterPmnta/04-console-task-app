@@ -6,7 +6,6 @@ import {
     listTaskToDelete,
     pausarApp
 } from './helpers/inquirer';
-import { Tarea } from './models/tarea';
 import { Tareas } from './models/tareas';
 import { loadDB, saveDB } from './helpers/saveFile';
 import { listTaskToComplete } from './helpers/inquirer';
@@ -43,7 +42,7 @@ const main = async () => {
 
             case '5':
                 const ids = await listTaskToComplete(tareas.listadoArr);
-                console.log(ids);
+                tareas.toggleCompleted(ids);
                 break;
 
             case '6':
