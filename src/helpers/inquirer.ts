@@ -126,8 +126,6 @@ export const listTaskToComplete = async (tareas: Array<any>) => {
     const choices = tareas.map((tarea, index: number) => {
         const idx = `${index + 1}.`.green;
 
-        console.log(tarea);
-
         return {
             value: tarea.id,
             name: `${idx} ${tarea.desc}`,
